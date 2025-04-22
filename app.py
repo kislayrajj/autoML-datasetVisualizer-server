@@ -9,7 +9,12 @@ port = 8000
 app = Flask(__name__)
 app.register_blueprint(models_bp)
 
-CORS(app)
+CORS(app, origins=[
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://auto-ml-dataset-visualizer-client.vercel.app"
+])
+
 
 @app.route('/train', methods=['POST'])
 def train():
